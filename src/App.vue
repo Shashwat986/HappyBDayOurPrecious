@@ -105,6 +105,11 @@ export default {
       });
   },
   mounted () {
+    for ( let i = 0; i <= 7; i++ ) {
+      let img = new Image();
+      img.src = 'pics/' + i + '.jpg';
+    }
+
     window.setInterval(() => {
       this.$refs.carousel.animate(
         [
