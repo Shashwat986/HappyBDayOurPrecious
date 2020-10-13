@@ -92,7 +92,7 @@ export default {
     },
     incrementImageIdx () {
       this.imageIdx += 1;
-      if (this.imageIdx > 8) {
+      if (this.imageIdx > 9) {
         this.imageIdx = 1;
       }
     }
@@ -105,7 +105,7 @@ export default {
       });
   },
   mounted () {
-    for ( let i = 1; i <= 8; i++ ) {
+    for ( let i = 1; i <= 9; i++ ) {
       let img = new Image();
       img.src = 'pics/' + i + '.jpg';
     }
