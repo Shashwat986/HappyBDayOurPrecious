@@ -10,7 +10,7 @@
                 Happy Birthday!
               </p>
               <p class="subtitle is-6 is-italic">
-                May your days be filled with laughter and warmth
+                We love you today and always
               </p>
               </div>
             </div>
@@ -92,7 +92,7 @@ export default {
     },
     incrementImageIdx () {
       this.imageIdx += 1;
-      if (this.imageIdx > 7) {
+      if (this.imageIdx > 6) {
         this.imageIdx = 1;
       }
     }
@@ -105,7 +105,7 @@ export default {
       });
   },
   mounted () {
-    for ( let i = 0; i <= 7; i++ ) {
+    for ( let i = 1; i <= 6; i++ ) {
       let img = new Image();
       img.src = 'pics/' + i + '.jpg';
     }
