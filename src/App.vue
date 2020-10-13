@@ -35,7 +35,7 @@
         <div class="column is-8 is-offset-2">
           <input type="text" v-model="textFilter" class="input" placeholder="Search">
         </div>
-        <div class="column is-4" v-for="item in filteredList(fileList.files)">
+        <div class="column is-4" v-for="item in filteredList(fileList)">
           <div class="card">
             <div class="card-header">
               <p class="card-header-title">
@@ -43,7 +43,7 @@
               </p>
             </div>
             <div class="card-content">
-              {{ item }}
+              <img :src="item.url" v-if="item.url">
             </div>
             <footer class="card-footer">
               <a href="#" class="card-footer-item" @click="playSong(item)">Play</a>
