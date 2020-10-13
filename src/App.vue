@@ -5,18 +5,20 @@
         <div class="column">
           <div class="level is-centered">
             <div class="level-item">
+              <div class="content">
               <p class="title is-3">
                 Happy Birthday!
               </p>
+              <p class="subtitle is-6 is-italic">
+                May your days be filled with laughter and warmth
+              </p>
+              </div>
             </div>
             <div class="level-item">
-              <template v-if="playingFile.name">
-                Playing {{ playingFile.name }}
-              </template>
             </div>
             <div class="level-item">
-              <figure class="image is-128x128">
-                <img class="is-rounded" src="pic.jpg">
+              <figure class="image">
+                <img ref="carousel" class="is-rounded" :src="'pics/' + imageIdx + '.jpg'">
               </figure>
             </div>
           </div>
@@ -29,6 +31,10 @@
             controls
             :src="playingFile.src">
           </audio>
+          <br/>
+          <template v-if="playingFile.name">
+            Playing "{{ playingFile.name }}"
+          </template>
         </div>
       </div>
       <div class="columns is-multiline">
@@ -61,6 +67,7 @@ export default {
   data () {
     return {
       fileList: null,
+      imageIdx: 1,
       textFilter: "",
       playingFile: {
         src: null,
@@ -82,6 +89,12 @@ export default {
         name: this.filteredName(item)
       }
       window.setTimeout(() => this.$refs.player.play(), 0);
+    },
+    incrementImageIdx () {
+      this.imageIdx += 1;
+      if (this.imageIdx > 7) {
+        this.imageIdx = 1;
+      }
     }
   },
   created () {
@@ -90,6 +103,23 @@ export default {
       .then((data) => {
         this.fileList = data;
       });
+  },
+  mounted () {
+    window.setInterval(() => {
+      this.$refs.carousel.animate(
+        [
+          { opacity: 0 },
+          { opacity: 1 },
+          { opacity: 1 },
+          { opacity: 1 },
+          { opacity: 0 }
+        ],
+        {
+          duration: 4000
+        }
+      );
+      this.incrementImageIdx()
+    }, 4000);
   }
 }
 </script>
@@ -106,5 +136,19 @@ export default {
 
 body {
   background-color: aliceblue;
+}
+
+figure.image {
+  height: 250px;
+  width: 250px;
+}
+
+img {
+  object-fit: contain;
+  max-height: 250px;
+  background-color: black;
+  display: inline-block;
+  vertical-align: middle;
+  height: 100% !important;
 }
 </style>
