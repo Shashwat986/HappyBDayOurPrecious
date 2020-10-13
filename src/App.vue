@@ -1,5 +1,5 @@
 <template>
-  <section id="app" style="margin-top: 0; padding-top: 60px;">
+  <section id="app" style="margin-top: 0; padding-top: 60px; background-image: url(bg.jpg); background-size: 100% auto; background-repeat: repeat-y;">
     <div class="container" v-if="fileList">
       <div class="columns">
         <div class="column">
@@ -7,7 +7,7 @@
             <div class="level-item">
               <div class="content">
               <p class="title is-3">
-                Happy Birthday!
+                Happy Birthday Our Precious!
               </p>
               <p class="subtitle is-6 is-italic">
                 We love you today and always
@@ -92,7 +92,7 @@ export default {
     },
     incrementImageIdx () {
       this.imageIdx += 1;
-      if (this.imageIdx > 7) {
+      if (this.imageIdx > 8) {
         this.imageIdx = 1;
       }
     }
@@ -105,7 +105,7 @@ export default {
       });
   },
   mounted () {
-    for ( let i = 1; i <= 7; i++ ) {
+    for ( let i = 1; i <= 8; i++ ) {
       let img = new Image();
       img.src = 'pics/' + i + '.jpg';
     }
